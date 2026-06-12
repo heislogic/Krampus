@@ -301,6 +301,20 @@ class FormularioCog(commands.Cog):
         embed.add_field(name="Status", value="⏳ **Pendente de aprovação**", inline=False)
         embed.set_footer(text="Guilda Wanted © | Community Server")
         embed.timestamp = datetime.now()
+        mentions = "".join([interaction.guild.get_role(c).mention for c in self.CARGOS_APROVACAO if interaction.guild.get_role(c)])
+
+        await self.resultados_channel.send(
+            content=mentions or None,
+            embed=embed,
+            View=AprovacaoView(
+                self,
+                interaction.user.id,
+                str(interaction.user),
+                nick,
+                classe,
+                recrutador
+            )
+        )
 
         await self.resultados_channel.send(
             embed=embed,
