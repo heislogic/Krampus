@@ -179,6 +179,7 @@ class TicketCog(commands.Cog):
     async def on_ready(self):
         """Restaura as views dos tickets ativos após reinicialização."""
         tickets = db.get_all_active_tickets()
+        print(f"[DEBUG] Tickets carregados do banco: {len(tickets)} -> {tickets}")
         for channel_id, user_id, welcome_msg_id in tickets:
             channel = self.bot.get_channel(channel_id)
             if channel:
