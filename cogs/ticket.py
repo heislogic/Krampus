@@ -128,7 +128,7 @@ class TicketCog(commands.Cog):
     async def fechar_ticket(self, interaction: discord.Interaction):
         canal = interaction.channel
         # Verifica se é ticket (novo padrão com emoji ou antigo)
-        if not (canal.name.startswith(("🔮", "🛡️", "💚", "📁")) and "・" in canal.name) and not canal.name.startswith("ticket-"):
+        if not (canal.name.startswith(("🔪", "🚑", "🔰", "📁")) and "・" in canal.name) and not canal.name.startswith("ticket-"):
             return await interaction.followup.send("❌ Não é um canal de ticket.", ephemeral=True)
 
         await interaction.followup.send(f"🔒 Ticket fechado por {interaction.user.mention}. O canal será deletado...")
@@ -140,7 +140,7 @@ class TicketCog(commands.Cog):
     # ====== ARQUIVAR TICKET (TRANSCRIPT) ======
     async def arquivar_ticket(self, interaction: discord.Interaction):
         canal = interaction.channel
-        if not (canal.name.startswith(("🔮", "🛡️", "💚", "📁")) and "・" in canal.name) and not canal.name.startswith("ticket-"):
+        if not (canal.name.startswith(("🔪", "🚑", "🔰", "📁")) and "・" in canal.name) and not canal.name.startswith("ticket-"):
             return await interaction.followup.send("❌ Não é um canal de ticket.", ephemeral=True)
 
         canal_logs = interaction.guild.get_channel(self.CANAL_LOGS_TRANSCRIPTS_ID)
